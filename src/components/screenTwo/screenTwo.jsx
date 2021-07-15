@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import './screenTwo.css';
 
 function ScreenTwo() {
@@ -10,9 +10,10 @@ function ScreenTwo() {
     const [deliveryInput, setDeliverInput] = useState(false);
 
     // create dispatch for redux state of customer info
-    const dispatch = useDispatch();
-
-
+    // const dispatch = useDispatch();
+const handleSubmit = (event) => {
+    event.preventDefault();
+ }
 
 // create html form for customer info
     return (
