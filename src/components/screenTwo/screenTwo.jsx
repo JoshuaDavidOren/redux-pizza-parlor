@@ -7,6 +7,7 @@ function screenTwo() {
     const [streetAddressInput, setStreetAddressInput] = useState('');
     const [cityInput, setCityInput] = useState('');
     const [zipInput, setZipInput] = useState('');
+    const [deliveryInput, setDeliverInput] = useState(false);
 
     // create dispatch for redux state of customer info
     const dispatch = useDispatch();
@@ -19,23 +20,31 @@ function screenTwo() {
             <input
                 placeholder='Name'
                 value={nameInput}
-                pnChange={(evt) => setNameInput(evt.target.value)}
+                onChange={(evt) => setNameInput(evt.target.value)}
             />
             <input
                 placeholder='Street Address'
                 value={streetAddressInput}
-                pnChange={(evt) => setStreetAddressInput(evt.target.value)}
+                onChange={(evt) => setStreetAddressInput(evt.target.value)}
             />
             <input
                 placeholder='City'
                 value={cityInput}
-                pnChange={(evt) => setCityInput(evt.target.value)}
+                onChange={(evt) => setCityInput(evt.target.value)}
             />
             <input
                 placeholder='Zip'
                 value={zipInput}
-                pnChange={(evt) => setZipInput(evt.target.value)}
+                onChange={(evt) => setZipInput(evt.target.value)}
             />
+            <input 
+            type='checkbox' 
+            id='delivery' 
+            value='true'
+            onChange={(evt) => setDeliverInput(evt.target.value)}/>
+                <label>Check for Delivery</label>
+            <button type='submit' value='submit'>NEXT</button> 
+
         </form>
     )
 }
