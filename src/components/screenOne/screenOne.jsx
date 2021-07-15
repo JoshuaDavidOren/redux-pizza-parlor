@@ -1,1 +1,2 @@
+import './screenOne.css';
 $

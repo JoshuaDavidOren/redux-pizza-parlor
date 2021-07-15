@@ -1,0 +1,2 @@
+import './screenAdmin.css';
+$
