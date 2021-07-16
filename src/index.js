@@ -25,11 +25,20 @@ const pizzaList = (state = [], action) => {
   return state;
 };
 
+// Customer info reducer
+const customerInfo = (state = [], action) => {
+  if (action.type === 'CUSTOMER_INFO') {
+    return action.payload;
+  }
+  return state;
+};
+
+
 // Store goes here  - Added by Steve
 const storeInstance = createStore(
   combineReducers({
     //  Reducers go here
-
+    customerInfo,
     customerList,
     pizzaList
   }),
