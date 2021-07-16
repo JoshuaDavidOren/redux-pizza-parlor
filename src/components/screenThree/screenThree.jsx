@@ -9,7 +9,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 function ScreenThree() {
     //once we have a filtered pizza list, swap that out here
     const selectedPizzasList = useSelector((store) => store.selectedPizzasList);
-    const customerList = useSelector((store) => store.customerList);
+    // const customerList = useSelector((store) => store.customerList);
     const customerInfo = useSelector((store) => store.customerInfo);
 
         // create dispatch for redux state of customer info

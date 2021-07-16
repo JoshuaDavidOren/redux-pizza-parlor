@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 function ScreenAdmin(){
 
-const customerList = useSelector((store) => store.customerList)
+const customerList = useSelector((store) => store.customerList);
 
 return (
     <table>
