@@ -2,10 +2,11 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from "react-redux";
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link, useHistory } from 'react-router-dom';
 import "./screenTwo.css";
 
 function ScreenTwo() {
+    const history = useHistory();
   const dispatch = useDispatch();
   const selectedPizzasList = useSelector((store) => store.selectedPizzasList);
   const [nameInput, setNameInput] = useState("");
@@ -30,6 +31,7 @@ function ScreenTwo() {
       type: "CUSTOMER_INFO",
       payload: customerFormInfo,
     });
+    history.push('/screenthree');
   };
 
   // create html form for customer info form
@@ -70,14 +72,17 @@ function ScreenTwo() {
         />
         <label>Check for Delivery</label>
 
-        <Link to="/screenthree">
+        
           <button type="submit" value="submit">
             NEXT
           </button>
-        </Link>
+        
       </form>
     </section>
   );
 }
 
 export default ScreenTwo;
+
+{/* <Link to="/screenthree"></Link>
+</Link> */}

@@ -82,16 +82,14 @@ function ScreenOne() {
               <td>{pizza.description}</td>
               <td>{pizza.price}</td>
               <td>
-                <Button variant="contained" color="primary" addButton onClick={() => selectPizza(pizza)}>Add</Button>
+                <Button variant="contained" color="primary" onClick={() => selectPizza(pizza)}>Add</Button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-
-      <button onClick={() => dispatchPizzaArrays()}>Next</button>
 	<Link to="/screentwo">
-      <Button variant="contained" color="primary">Next</Button>
+      <Button variant="contained" color="primary" onClick={() => dispatchPizzaArrays()}>Next</Button>
 	  </Link>
     </div>
   );
