@@ -1,10 +1,11 @@
 import "./screenOne.css";
+import { useState } from 'react';
 import { useSelector } from "react-redux";
 
 function ScreenOne() {
   const pizzaList = useSelector((store) => store.pizzaList);
-//   const pizzaSelected = [newPizzaOrder, setNewPizzaOrder]
-// 
+
+  const [pizza1, setPizza1] = useState('');
 
   return (
 	<div>
