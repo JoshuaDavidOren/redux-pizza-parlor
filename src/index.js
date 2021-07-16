@@ -9,11 +9,18 @@ import { Provider } from "react-redux";
 import logger from "redux-logger";
 
 // Reducers go here
+const customerList = (state = [], action) => {
+  if(action.type === 'ORDER_LIST'){
+    return action.payload
+  }
+  return state
+}
 
 // Store goes here  - Added by Steve
 const storeInstance = createStore(
   combineReducers({
     //  Reducers go here
+    customerList
   }),
   applyMiddleware(logger)
 );
