@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+import ScreenTwo from '../screenTwo/screenTwo';
 
 // imports - added by Steve
 import { useDispatch } from 'react-redux';
@@ -33,7 +34,11 @@ function App() {
   
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
+
       <ScreenOne />
+
+  <ScreenTwo />
+
     </div>
   );
 }
