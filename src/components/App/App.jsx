@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 import ScreenTwo from "../screenTwo/screenTwo";
-import ScreenThree from '../screenThree/screenThree';
+import ScreenThree from "../screenThree/screenThree";
 import ScreenAdmin from "../screenAdmin/screenAdmin";
 
 // imports - added by Steve
@@ -47,31 +47,29 @@ function App() {
 
   return (
     <Router>
-    <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">Prime Pizza</h1>
-      </header>
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Prime Pizza</h1>
+        </header>
 
-      <img src="images/pizza_photo.png" />
-      <p>Pizza is great.</p>
+        <h1>Pizza Menu</h1>
 
-      <Route path="/" exact>
-      <ScreenOne />
-      </Route>
+        <Route path="/" exact>
+          <ScreenOne />
+        </Route>
 
-      <Route path="/screentwo" exact>
-      <ScreenTwo />
-      </Route>
+        <Route path="/screentwo" exact>
+          <ScreenTwo />
+        </Route>
 
-      <Route path="/screenthree" exact>
-      <ScreenThree />
-      </Route>
-      
-      <Route path="/screenadmin" exact>
-      <ScreenAdmin />
-      </Route>
+        <Route path="/screenthree" exact>
+          <ScreenThree />
+        </Route>
 
-    </div>
+        <Route path="/screenadmin" exact>
+          <ScreenAdmin />
+        </Route>
+      </div>
     </Router>
   );
 }
