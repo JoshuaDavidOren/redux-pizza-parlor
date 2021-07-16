@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 
 function ScreenOne() {
   const pizzaList = useSelector((store) => store.pizzaList);
+//   const pizzaSelected = [newPizzaOrder, setNewPizzaOrder]
+// 
 
   return (
 	<div>
@@ -12,6 +14,7 @@ function ScreenOne() {
 				<th>Name</th>
 				<th>Description</th>
 				<th>Price</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,10 +29,15 @@ function ScreenOne() {
 					<td>
 						{pizza.price}
 					</td>
+					<td>
+						<button>Add</button>
+					</td>
 				</tr>
 			))}
 		</tbody>
 	</table>
+
+	<button>Next</button>
 </div>
   );
 }
