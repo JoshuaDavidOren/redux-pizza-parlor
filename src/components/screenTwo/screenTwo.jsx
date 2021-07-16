@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import './screenTwo.css';
+import { useSelector } from "react-redux";
 
 function ScreenTwo() {
 
-const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const selectedPizzasList = useSelector((store) => store.selectedPizzasList);
 
     const [nameInput, setNameInput] = useState('');
     const [streetAddressInput, setStreetAddressInput] = useState('');
@@ -31,7 +32,7 @@ const dispatch = useDispatch();
         <section>
             <div>
                 <label>Total:
-                     {/* priceOfOrder */}
+                     {selectedPizzasList.reduce((sum, current) => sum + current.quantity*Number(current.price), 0).toFixed(2)}
                 </label>
             </div>
             <form onSubmit={handleSubmit}>

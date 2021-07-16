@@ -16,7 +16,7 @@ function ScreenThree() {
     const handleSubmit = () => {
         console.log('Clicked checkout');
         event.preventDefault();
-        const total = selectedPizzasList.reduce((sum, current) => sum + Number(current.price), 0).toFixed(2);
+        const total = selectedPizzasList.reduce((sum, current) => sum + current.quantity*Number(current.price), 0).toFixed(2);
 
         axios({
           method: "POST",
@@ -28,10 +28,7 @@ function ScreenThree() {
             zip: customerInfo.zipInput,
             type: customerInfo.deliveryInput,
             total: total,
-            pizzas: [
-              { id: "1", quantity: 1 },
-              { id: "1", quantity: 1 },
-            ],
+            pizzas: selectedPizzasList
           },
         })
           .then((response) => {
@@ -59,6 +56,7 @@ function ScreenThree() {
                         <tr>
                             <th>Name</th>
                             <th>Cost</th>
+                            <th>quantity</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,6 +68,11 @@ function ScreenThree() {
                                 <td>
                                     {pizza.price}
                                 </td>
+                                <td>
+                                    <button>-</button>
+                                    {pizza.quantity}
+                                    <button>+</button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
@@ -77,7 +80,7 @@ function ScreenThree() {
             </section>
             <section>
                 <h3>
-                    Total: {selectedPizzasList.reduce((sum, current) => sum + Number(current.price), 0).toFixed(2)}
+                    Total: {selectedPizzasList.reduce((sum, current) => sum + current.quantity*Number(current.price), 0).toFixed(2)}
                 </h3>
             </section>
             <section>

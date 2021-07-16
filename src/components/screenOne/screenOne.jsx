@@ -7,11 +7,42 @@ function ScreenOne() {
   const pizzaList = useSelector((store) => store.pizzaList);
   const [currentPizzaList, setCurrentPizzaList] = useState([]);
 
-  
+//   const DisplayQuantity = ({idIn}) => {
+// 	console.log('index', idIn);
+// 	const pizzaIndex = checkIfPizzaInArray(idIn, currentPizzaList);
+// 	if (pizzaIndex === -1) {
+// 		return <></>;
+// 	} else {
+// 		return (
+// 			<div>
+// 				Quantity: {currentPizzaList[pizzaIndex].quantity}
+// 			</div>
+// 		)
+// 	}
+//   } //end DisplayQuantity
+
+  const checkIfPizzaInArray = (searchTerm, searchArray) => {
+	for (const i in searchArray) {
+		if (searchArray[i].id === searchTerm) {
+			return i;
+		}
+	}
+	return -1;
+  }; //end checkIfPizzaInArray
+
   const selectPizza = (pizzaToAdd) => {
 		event.preventDefault();
-		currentPizzaList.push(pizzaToAdd);
-  };
+		const pizzaIndex = checkIfPizzaInArray(pizzaToAdd.id, currentPizzaList);
+		if (pizzaIndex === -1) {
+			pizzaToAdd.quantity = 1;
+			currentPizzaList.push(pizzaToAdd);
+		} else {
+			const updatePizzaList = currentPizzaList;
+			updatePizzaList[pizzaIndex].quantity += 1;
+			setCurrentPizzaList(updatePizzaList);
+		}
+		
+  }; //end selectPizza
 
   const dispatchPizzaArrays = () => {
 	event.preventDefault();
@@ -19,7 +50,7 @@ function ScreenOne() {
       type: "SELECTED_PIZZAS",
       payload: currentPizzaList,
     });
-  }
+  }; //end dispatchPizzaArrays
 
   return (
     <div>
