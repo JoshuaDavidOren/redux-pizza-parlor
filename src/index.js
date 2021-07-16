@@ -16,6 +16,15 @@ const customerList = (state = [], action) => {
   return state;
 };
 
+// Reducers go here
+const selectedPizzasList = (state = [], action) => {
+  if (action.type === "SELECTED_PIZZAS") {
+    console.log(action.payload);
+    return action.payload;
+  }
+  return state;
+};
+
 // pizzaList reducer for screenOne - Added by Steve
 const pizzaList = (state = [], action) => {
   // TODO - set pizza list with data from server

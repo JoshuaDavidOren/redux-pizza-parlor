@@ -5,14 +5,21 @@ import { useSelector, useDispatch } from "react-redux";
 function ScreenOne() {
   const dispatch = useDispatch();
   const pizzaList = useSelector((store) => store.pizzaList);
+  const [currentPizzaList, setCurrentPizzaList] = useState([]);
 
   
   const selectPizza = (pizzaToAdd) => {
-    dispatch({
-      type: "SELECT_PIZZA",
-      payload: pizzaToAdd,
-    });
+		event.preventDefault();
+		currentPizzaList.push(pizzaToAdd);
   };
+
+  const dispatchPizzaArrays = () => {
+	event.preventDefault();
+    dispatch({
+      type: "SELECTED_PIZZAS",
+      payload: currentPizzaList,
+    });
+  }
 
   return (
     <div>
@@ -39,7 +46,7 @@ function ScreenOne() {
         </tbody>
       </table>
 
-      <button>Next</button>
+      <button onClick={() => dispatchPizzaArrays()}>Next</button>
     </div>
   );
 }
