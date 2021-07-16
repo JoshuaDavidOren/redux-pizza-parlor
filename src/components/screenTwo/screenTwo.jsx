@@ -1,5 +1,6 @@
+import axios from 'axios';
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux'; for the data needed at total & pizzas
 import './screenTwo.css';
 
 function ScreenTwo() {
@@ -9,10 +10,30 @@ function ScreenTwo() {
     const [zipInput, setZipInput] = useState('');
     const [deliveryInput, setDeliverInput] = useState(false);
 
+    
     // create dispatch for redux state of customer info
     // const dispatch = useDispatch();
 const handleSubmit = (event) => {
     event.preventDefault();
+
+    axios({
+        method: 'POST',
+        url: '/api/order',
+        data: { 
+            customer_name: nameInput,
+            street_address: streetAddressInput,
+            city: cityInput,
+            zip: zipInput,
+            type: deliveryInput,
+            total: 1.99,
+            pizzas: [{id: '1', quantity: 1},{id: '1', quantity: 1}]
+        }
+    }).then((response) => {
+        console.log(response);
+        // history.push('/theNextPage')
+    }).catch((err) => {
+        console.log('this is a Post error',err);
+    });
  }
 
 // create html form for customer info
