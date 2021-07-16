@@ -201,7 +201,7 @@ function ScreenThree() {
                 <div>Step 3: Delivery</div>
                 <div>{customerList.customer_name}</div>
                 <div>{customerList.street_address}</div>
-                <div>{customerList.city}, {getState('99950')}</div>
+                <div>{customerList.city}, {getState(customerList.zip)}</div>
             </section>
             <section>
                 <h4>{customerList.type}</h4>
