@@ -1,6 +1,7 @@
 import "./screenOne.css";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 function ScreenOne() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function ScreenOne() {
 	return -1;
   }; //end checkIfPizzaInArray
 
+
   const selectPizza = (pizzaToAdd) => {
 		event.preventDefault();
 		const pizzaIndex = checkIfPizzaInArray(pizzaToAdd.id, currentPizzaList);
@@ -57,16 +59,16 @@ function ScreenOne() {
       <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
+            <th></th>
+            <th></th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           {pizzaList.map((pizza, index) => (
             <tr key={index}>
-              <td>{pizza.name}</td>
+              <td>{pizza.name}<img src = {pizza.image_path}></img></td>
               <td>{pizza.description}</td>
               <td>{pizza.price}</td>
               <td>
@@ -78,6 +80,9 @@ function ScreenOne() {
       </table>
 
       <button onClick={() => dispatchPizzaArrays()}>Next</button>
+	<Link to="/screentwo">
+      <button>Next</button>
+	  </Link>
     </div>
   );
 }

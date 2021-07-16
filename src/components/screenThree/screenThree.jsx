@@ -3,6 +3,7 @@ import GetStateFromZip from '../getStateFromZip/getStateFromZip';
 import { useSelector } from "react-redux";
 import { useState } from 'react';
 import axios from 'axios';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 
 function ScreenThree() {
@@ -85,7 +86,9 @@ function ScreenThree() {
             </section>
             <section>
                 {/* don't send to db until user clicks checkout */}
+                <Link to="/">
                 <button type='submit' value='submit' onClick={()=>handleSubmit()}>CHECKOUT</button>
+                </Link>
             </section>
         </>
     );
