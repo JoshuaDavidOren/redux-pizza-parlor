@@ -2,25 +2,12 @@ import "./screenOne.css";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import MenuItem from '../menuItem/menuItem';
 
 function ScreenOne() {
   const dispatch = useDispatch();
   const pizzaList = useSelector((store) => store.pizzaList);
   const [currentPizzaList, setCurrentPizzaList] = useState([]);
-
-//   const DisplayQuantity = ({idIn}) => {
-// 	console.log('index', idIn);
-// 	const pizzaIndex = checkIfPizzaInArray(idIn, currentPizzaList);
-// 	if (pizzaIndex === -1) {
-// 		return <></>;
-// 	} else {
-// 		return (
-// 			<div>
-// 				Quantity: {currentPizzaList[pizzaIndex].quantity}
-// 			</div>
-// 		)
-// 	}
-//   } //end DisplayQuantity
 
   const checkIfPizzaInArray = (searchTerm, searchArray) => {
 	for (const i in searchArray) {
@@ -32,7 +19,7 @@ function ScreenOne() {
   }; //end checkIfPizzaInArray
 
 
-  const selectPizza = (pizzaToAdd) => {
+  const incrementPizza = (pizzaToAdd) => {
 		event.preventDefault();
 		const pizzaIndex = checkIfPizzaInArray(pizzaToAdd.id, currentPizzaList);
 		if (pizzaIndex === -1) {
@@ -43,8 +30,23 @@ function ScreenOne() {
 			updatePizzaList[pizzaIndex].quantity += 1;
 			setCurrentPizzaList(updatePizzaList);
 		}
-		
-  }; //end selectPizza
+  }; //end incrementPizza
+
+  const decrementPizza = (pizzaToDec) => {
+	event.preventDefault();
+	const pizzaIndex = checkIfPizzaInArray(pizzaToDec.id, currentPizzaList);
+	if (pizzaIndex === -1) {
+		pizzaToDec.quantity = 0;
+		currentPizzaList.push(pizzaToDec);
+		console.log("we shouldn't be here");
+	} else {
+		const updatePizzaList = currentPizzaList;
+		if (updatePizzaList[pizzaIndex].quantity > 0) {
+			updatePizzaList[pizzaIndex].quantity -= 1;
+		}
+		setCurrentPizzaList(updatePizzaList);
+	}
+}; //end incrementPizza
 
   const dispatchPizzaArrays = () => {
 	event.preventDefault();
@@ -67,19 +69,10 @@ function ScreenOne() {
         </thead>
         <tbody>
           {pizzaList.map((pizza, index) => (
-            <tr key={index}>
-              <td>{pizza.name}<img src = {pizza.image_path}></img></td>
-              <td>{pizza.description}</td>
-              <td>{pizza.price}</td>
-              <td>
-                <button onClick={() => selectPizza(pizza)}>Add</button>
-              </td>
-            </tr>
+			  <MenuItem key={index} pizza = {pizza} decrementPizza = {decrementPizza} incrementPizza = {incrementPizza}/>
           ))}
         </tbody>
       </table>
-
-      <button onClick={() => dispatchPizzaArrays()}>Next</button>
 	<Link to="/screentwo">
       <button>Next</button>
 	  </Link>
