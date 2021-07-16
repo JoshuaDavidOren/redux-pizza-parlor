@@ -3,6 +3,10 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
+// Material-UI
+import React from 'react';
+import Button from '@material-ui/core/Button';
+
 function ScreenOne() {
   const dispatch = useDispatch();
   const pizzaList = useSelector((store) => store.pizzaList);
@@ -33,14 +37,14 @@ function ScreenOne() {
               <td>{pizza.description}</td>
               <td>{pizza.price}</td>
               <td>
-                <button onClick={() => selectPizza(pizza)}>Add</button>
+                <Button variant="contained" color="primary" addButton onClick={() => selectPizza(pizza)}>Add</Button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 	<Link to="/screentwo">
-      <button>Next</button>
+      <Button variant="contained" color="primary">Next</Button>
 	  </Link>
     </div>
   );
