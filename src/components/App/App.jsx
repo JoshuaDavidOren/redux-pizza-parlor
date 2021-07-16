@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import ScreenTwo from '../screenTwo/screenTwo';
+import ScreenThree from '../screenThree/screenThree';
+
 
 // imports - added by Steve
 import { useDispatch } from 'react-redux';
@@ -37,7 +39,9 @@ function App() {
 
       <ScreenOne />
 
-  <ScreenTwo />
+    <ScreenTwo />
+
+    <ScreenThree />
 
     </div>
   );
