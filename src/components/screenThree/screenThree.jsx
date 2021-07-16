@@ -7,7 +7,7 @@ import axios from 'axios';
 
 function ScreenThree() {
     //once we have a filtered pizza list, swap that out here
-    const pizzaList = useSelector((store) => store.pizzaList);
+    const selectedPizzasList = useSelector((store) => store.selectedPizzasList);
     const customerList = useSelector((store) => store.customerList);
     const customerInfo = useSelector((store) => store.customerInfo);
 
@@ -16,7 +16,7 @@ function ScreenThree() {
     const handleSubmit = () => {
         console.log('Clicked checkout');
         event.preventDefault();
-        const total = pizzaList.reduce((sum, current) => sum + Number(current.price), 0).toFixed(2);
+        const total = selectedPizzasList.reduce((sum, current) => sum + Number(current.price), 0).toFixed(2);
 
         axios({
           method: "POST",
@@ -62,7 +62,7 @@ function ScreenThree() {
                         </tr>
                     </thead>
                     <tbody>
-                        {pizzaList.map((pizza, index) => (
+                        {selectedPizzasList.map((pizza, index) => (
                             <tr key={index}>
                                 <td>
                                     {pizza.name}
@@ -77,7 +77,7 @@ function ScreenThree() {
             </section>
             <section>
                 <h3>
-                    Total: {pizzaList.reduce((sum, current) => sum + Number(current.price), 0).toFixed(2)}
+                    Total: {selectedPizzasList.reduce((sum, current) => sum + Number(current.price), 0).toFixed(2)}
                 </h3>
             </section>
             <section>

@@ -49,7 +49,8 @@ const storeInstance = createStore(
     //  Reducers go here
     customerInfo,
     customerList,
-    pizzaList
+    pizzaList,
+    selectedPizzasList
   }),
   applyMiddleware(logger)
 );
