@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./App.css";
 import ScreenTwo from "../screenTwo/screenTwo";
+import ScreenAdmin from "../screenAdmin/screenAdmin";
 
 // imports - added by Steve
 import { useDispatch } from "react-redux";
@@ -34,7 +35,7 @@ function App() {
     axios
       .get("/api/order")
       .then((response) => {
-        dispatchEvent({ type: "ORDER_LIST", payload: response.data });
+        dispatch({ type: "ORDER_LIST", payload: response.data });
       })
       .catch((err) => {
         console.log(err);
@@ -54,6 +55,7 @@ function App() {
       <ScreenOne />
 
       <ScreenTwo />
+      <ScreenAdmin />
     </div>
   );
 }
