@@ -12,7 +12,7 @@ import logger from "redux-logger";
 
 // pizzaList reducer for screenOne - Added by Steve
 const pizzaList = (state = [], action) => {
-  // TODO - set book list with data from server
+  // TODO - set pizza list with data from server
   if(action.type === 'SET_PIZZA_LIST'){
     return action.payload
   }
