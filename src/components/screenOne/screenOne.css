@@ -25,3 +25,20 @@ td {
 img {
     width: 200px;
 }
+
+.card {
+    width: 200px;
+    height: 300px;
+    padding: 30px;
+
+}
+
+section {
+	display: flex;
+    flex-direction: row;
+	flex-wrap: wrap;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 50px;
+}
