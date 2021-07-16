@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./App.css";
 import ScreenTwo from "../screenTwo/screenTwo";
+import ScreenThree from '../screenThree/screenThree';
 import ScreenAdmin from "../screenAdmin/screenAdmin";
 
 // imports - added by Steve
@@ -53,8 +54,8 @@ function App() {
       <p>Pizza is great.</p>
 
       <ScreenOne />
-
       <ScreenTwo />
+      <ScreenThree />
       <ScreenAdmin />
     </div>
   );
