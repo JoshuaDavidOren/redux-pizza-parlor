@@ -9,6 +9,12 @@ import { Provider } from "react-redux";
 import logger from "redux-logger";
 
 // Reducers go here
+const customerList = (state = [], action) => {
+  if(action.type === 'ORDER_LIST'){
+    return action.payload
+  }
+  return state
+}
 
 // pizzaList reducer for screenOne - Added by Steve
 const pizzaList = (state = [], action) => {
@@ -23,7 +29,10 @@ const pizzaList = (state = [], action) => {
 const storeInstance = createStore(
   combineReducers({
     //  Reducers go here
+
+    customerList
     pizzaList
+
   }),
   applyMiddleware(logger)
 );
