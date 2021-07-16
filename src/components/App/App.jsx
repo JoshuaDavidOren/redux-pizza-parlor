@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import "./App.css";
 import ScreenTwo from "../screenTwo/screenTwo";
 import ScreenThree from '../screenThree/screenThree';
@@ -45,6 +46,7 @@ function App() {
   };
 
   return (
+    <Router>
     <div className="App">
       <header className="App-header">
         <h1 className="App-title">Prime Pizza</h1>
@@ -53,11 +55,24 @@ function App() {
       <img src="images/pizza_photo.png" />
       <p>Pizza is great.</p>
 
+      <Route path="/" exact>
       <ScreenOne />
+      </Route>
+
+      <Route path="/screentwo" exact>
       <ScreenTwo />
+      </Route>
+
+      <Route path="/screenthree" exact>
       <ScreenThree />
+      </Route>
+      
+      <Route path="/screenadmin" exact>
       <ScreenAdmin />
+      </Route>
+
     </div>
+    </Router>
   );
 }
 
