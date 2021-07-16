@@ -1,13 +1,14 @@
 table{
     margin: auto;
     border: none;
-    width: 60%;
+    width: 80%;
 }
 
 table th{
-    background-color: rgb(221, 221, 221);
+    background-color: #fff;
     height: 50px;
-    border: 1px solid black;
+    border: none;
+    /* border: 1px solid black; */
     font-size: 18px;
 }
 
@@ -17,6 +18,10 @@ table tbody{
 }
 
 td {
-    border: 1px solid black;
+    border: none;
     height: 30px;
+}
+
+img {
+    width: 200px;
 }

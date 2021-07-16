@@ -20,16 +20,16 @@ function ScreenOne() {
       <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
+            <th></th>
+            <th></th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           {pizzaList.map((pizza, index) => (
             <tr key={index}>
-              <td>{pizza.name}</td>
+              <td>{pizza.name}<img src = {pizza.image_path}></img></td>
               <td>{pizza.description}</td>
               <td>{pizza.price}</td>
               <td>
