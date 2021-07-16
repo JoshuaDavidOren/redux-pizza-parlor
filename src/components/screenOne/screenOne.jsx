@@ -6,14 +6,53 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 function ScreenOne() {
   const dispatch = useDispatch();
   const pizzaList = useSelector((store) => store.pizzaList);
+  const [currentPizzaList, setCurrentPizzaList] = useState([]);
+
+//   const DisplayQuantity = ({idIn}) => {
+// 	console.log('index', idIn);
+// 	const pizzaIndex = checkIfPizzaInArray(idIn, currentPizzaList);
+// 	if (pizzaIndex === -1) {
+// 		return <></>;
+// 	} else {
+// 		return (
+// 			<div>
+// 				Quantity: {currentPizzaList[pizzaIndex].quantity}
+// 			</div>
+// 		)
+// 	}
+//   } //end DisplayQuantity
+
+  const checkIfPizzaInArray = (searchTerm, searchArray) => {
+	for (const i in searchArray) {
+		if (searchArray[i].id === searchTerm) {
+			return i;
+		}
+	}
+	return -1;
+  }; //end checkIfPizzaInArray
 
 
   const selectPizza = (pizzaToAdd) => {
+		event.preventDefault();
+		const pizzaIndex = checkIfPizzaInArray(pizzaToAdd.id, currentPizzaList);
+		if (pizzaIndex === -1) {
+			pizzaToAdd.quantity = 1;
+			currentPizzaList.push(pizzaToAdd);
+		} else {
+			const updatePizzaList = currentPizzaList;
+			updatePizzaList[pizzaIndex].quantity += 1;
+			setCurrentPizzaList(updatePizzaList);
+		}
+		
+  }; //end selectPizza
+
+  const dispatchPizzaArrays = () => {
+	event.preventDefault();
     dispatch({
-      type: "SELECT_PIZZA",
-      payload: pizzaToAdd,
+      type: "SELECTED_PIZZAS",
+      payload: currentPizzaList,
     });
-  };
+  }; //end dispatchPizzaArrays
 
   return (
     <div>
@@ -39,6 +78,8 @@ function ScreenOne() {
           ))}
         </tbody>
       </table>
+
+      <button onClick={() => dispatchPizzaArrays()}>Next</button>
 	<Link to="/screentwo">
       <button>Next</button>
 	  </Link>

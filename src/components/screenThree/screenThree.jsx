@@ -8,7 +8,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 function ScreenThree() {
     //once we have a filtered pizza list, swap that out here
-    const pizzaList = useSelector((store) => store.pizzaList);
+    const selectedPizzasList = useSelector((store) => store.selectedPizzasList);
     const customerList = useSelector((store) => store.customerList);
     const customerInfo = useSelector((store) => store.customerInfo);
 
@@ -17,7 +17,7 @@ function ScreenThree() {
     const handleSubmit = () => {
         console.log('Clicked checkout');
         event.preventDefault();
-        const total = pizzaList.reduce((sum, current) => sum + Number(current.price), 0).toFixed(2);
+        const total = selectedPizzasList.reduce((sum, current) => sum + current.quantity*Number(current.price), 0).toFixed(2);
 
         axios({
           method: "POST",
@@ -29,10 +29,7 @@ function ScreenThree() {
             zip: customerInfo.zipInput,
             type: customerInfo.deliveryInput,
             total: total,
-            pizzas: [
-              { id: "1", quantity: 1 },
-              { id: "1", quantity: 1 },
-            ],
+            pizzas: selectedPizzasList
           },
         })
           .then((response) => {
@@ -60,16 +57,22 @@ function ScreenThree() {
                         <tr>
                             <th>Name</th>
                             <th>Cost</th>
+                            <th>quantity</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {pizzaList.map((pizza, index) => (
+                        {selectedPizzasList.map((pizza, index) => (
                             <tr key={index}>
                                 <td>
                                     {pizza.name}
                                 </td>
                                 <td>
                                     {pizza.price}
+                                </td>
+                                <td>
+                                    <button>-</button>
+                                    {pizza.quantity}
+                                    <button>+</button>
                                 </td>
                             </tr>
                         ))}
@@ -78,7 +81,7 @@ function ScreenThree() {
             </section>
             <section>
                 <h3>
-                    Total: {pizzaList.reduce((sum, current) => sum + Number(current.price), 0).toFixed(2)}
+                    Total: {selectedPizzasList.reduce((sum, current) => sum + current.quantity*Number(current.price), 0).toFixed(2)}
                 </h3>
             </section>
             <section>
