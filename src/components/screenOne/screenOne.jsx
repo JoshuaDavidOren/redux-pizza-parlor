@@ -1,12 +1,13 @@
 import "./screenOne.css";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 function ScreenOne() {
   const dispatch = useDispatch();
   const pizzaList = useSelector((store) => store.pizzaList);
 
-  
+
   const selectPizza = (pizzaToAdd) => {
     dispatch({
       type: "SELECT_PIZZA",
@@ -38,8 +39,9 @@ function ScreenOne() {
           ))}
         </tbody>
       </table>
-
+	<Link to="/screentwo">
       <button>Next</button>
+	  </Link>
     </div>
   );
 }
